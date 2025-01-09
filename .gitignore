@@ -1,0 +1,73 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# Environment files
+# For the moment they can stay public 
+# .env
+# .env.*
+
+# Docker
+docker-compose.override.yml
+docker-compose*.log
+*.dockerfile
+*.tar
+
+# Kubernetes
+.kube/
+k8s/outputs/
+k8s/*.yaml~  # Exclude backup files
+k8s/secrets/  # Avoid sensitive files (e.g., secrets.yaml)
+
+# Terraform
+.terraform/
+terraform.tfstate
+terraform.tfstate.backup
+*.tfvars
+*.tfplan
+
+# Helm
+charts/
+helm-release.yaml
+.release/
+
+# IDEs and Editors
+.idea/
+.vscode/
+*.swp
+*.swo
+*.bak
+
+# Build artifacts
+dist/
+build/
+tmp/
+temp/
+
+# Monitoring tools
+monitoring/prometheus-data/
+monitoring/grafana-data/
+monitoring/*.db
+
+# Git
+.gitignore~
+*.orig
+
+# Miscellaneous
+*.DS_Store
+*.lock
+*.log
+*.bak
+*.tmp
+*.out
+Thumbs.db
+
+# Ignore local configurations
+*.local.*
