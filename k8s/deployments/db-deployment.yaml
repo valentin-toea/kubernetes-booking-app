@@ -25,3 +25,10 @@ spec:
               value: password
             - name: POSTGRES_DB
               value: booking
+          volumeMounts:
+            - name: postgres-storage
+              mountPath: /var/lib/postgresql/data
+      volumes:
+        - name: postgres-storage
+          persistentVolumeClaim:
+            claimName: postgres-pvc

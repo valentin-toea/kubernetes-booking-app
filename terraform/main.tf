@@ -9,7 +9,6 @@ terraform {
 
 provider "null" {}
 
-# Creează clusterul Kind
 resource "null_resource" "create_kind_cluster" {
   provisioner "local-exec" {
     command = <<EOT
@@ -22,9 +21,8 @@ resource "null_resource" "create_kind_cluster" {
   }
 }
 
-# Șterge clusterul Kind (legat doar de terraform destroy)
 resource "null_resource" "delete_kind_cluster" {
-  count = 0 # Implicit, nu rulează
+  count = 0
   provisioner "local-exec" {
     command = "kind delete cluster --name ${var.cluster_name}"
   }

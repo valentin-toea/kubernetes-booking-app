@@ -1,0 +1,26 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: prometheus-config
+  namespace: monitoring
+data:
+  prometheus.yml: |
+    global:
+      scrape_interval: 15s
+
+    scrape_configs:
+      # Kubernetes Nodes Monitoring
+      - job_name: 'kubernetes-nodes'
+        kubernetes_sd_configs:
+          - role: node
+        scheme: https
+        tls_config:
+          ca_file: /var/run/secrets/kubernetes.io/serviceaccount/ca.crt
+        bearer_token: eyJhbGciOiJSUzI1NiIsImtpZCI6IjJkdi1welVFdnFveDlNNHo1dXliMzZWeXN4UUVhMHNZcS1ob1dETHJRSG8ifQ.eyJpc3MiOiJrdWJlcm5ldGVzL3NlcnZpY2VhY2NvdW50Iiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9uYW1lc3BhY2UiOiJtb25pdG9yaW5nIiwia3ViZXJuZXRlcy5pby9zZXJ2aWNlYWNjb3VudC9zZWNyZXQubmFtZSI6InByb21ldGhldXMtdG9rZW4iLCJrdWJlcm5ldGVzLmlvL3NlcnZpY2VhY2NvdW50L3NlcnZpY2UtYWNjb3VudC5uYW1lIjoicHJvbWV0aGV1cyIsImt1YmVybmV0ZXMuaW8vc2VydmljZWFjY291bnQvc2VydmljZS1hY2NvdW50LnVpZCI6IjhjNDQ4NGE2LTU4MzktNGY3NC1hOTg3LWJiMzY1NjM0MDJmOSIsInN1YiI6InN5c3RlbTpzZXJ2aWNlYWNjb3VudDptb25pdG9yaW5nOnByb21ldGhldXMifQ.Jjh3aDC_ctXJZhUjOK3dO4p6AoNWUsyZ_t-GcQSBd5HcCUfx0oetADQ_N1y3MricLBkpHPeRYhSVw2tEWOWKrGAA1-qzt26kJiZ_-kNRU_zwhrArwEBvvV9bTeJOnf1XthGcug8hnTBH01QGtFnvn8psqGcnoRmYxmwE2FKsSz_UxJgcRLZjN5gAgoLiV1h6dvpfArA6LBWQ0VDGgLwNwY1z7n6p1ozKUD88VI34lMJPsv6qmUdealZqPBu6LyB7wW1amJPDaqglMj4BS4x-a75OZItgbfKgba9G9NeQeyzQ3pGTp5GjpLVv_pO3z8fpVyMHZVGDtNNMnW-nIJnsQA
+        relabel_configs:
+          - action: labelmap
+            regex: __meta_kubernetes_node_label_(.+)
+          - target_label: __address__
+            replacement: kubernetes.default.svc:443
+          - source_labels: [__meta_kubernetes_node_name]
+            target_label: instance

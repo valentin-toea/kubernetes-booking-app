@@ -8,6 +8,6 @@ spec:
     app: auth
   ports:
     - protocol: TCP
-      port: 80 # Portul expus în cluster
-      targetPort: 3000 # Portul pe care îl ascultă containerul
-  type: ClusterIP # Accesibil doar din cluster
+      port: 80
+      targetPort: 3000
+  type: ClusterIP

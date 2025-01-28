@@ -1,4 +1,13 @@
-import { Controller, Post, Body, UseGuards, Request } from '@nestjs/common';
+import {
+  Controller,
+  Post,
+  Body,
+  UseGuards,
+  Request,
+  Get,
+  Headers,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { AuthService } from './auth.service';
 import { LocalAuthGuard } from './local-auth.guard';
 
@@ -15,5 +24,21 @@ export class AuthController {
   @Post('register')
   async register(@Body() userDto: { username: string; password: string }) {
     return this.authService.register(userDto);
+  }
+
+  @Get('validate')
+  validateToken(@Headers('authorization') authHeader: string) {
+    if (!authHeader) {
+      throw new UnauthorizedException('Authorization header missing');
+    }
+
+    // Extrage token-ul din header
+    const token = authHeader.split(' ')[1];
+    if (!token) {
+      throw new UnauthorizedException('Bearer token missing');
+    }
+
+    // Validează token-ul și returnează payload-ul
+    return this.authService.validateToken(token);
   }
 }

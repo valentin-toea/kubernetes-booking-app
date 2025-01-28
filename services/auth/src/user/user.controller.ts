@@ -5,8 +5,13 @@ import { UserService } from './user.service';
 export class UserController {
   constructor(private readonly userService: UserService) {}
 
+  @Get(':userId')
+  async findOne(@Param('userId') userId: string) {
+    return this.userService.findByUserId(userId);
+  }
+
   @Get(':username')
-  async findOne(@Param('username') username: string) {
+  async findOneByUsername(@Param('username') username: string) {
     return this.userService.findByUsername(username);
   }
 }
