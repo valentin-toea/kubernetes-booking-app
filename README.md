@@ -19,6 +19,18 @@ The project utilizes the following tools and technologies:
 - **Terraform**: For infrastructure automation.
 - **KIND**: For creating and managing Kubernetes clusters locally.
 - **kubectl**: For managing Kubernetes resources.
+- **Node.JS and Nest.JS**: For authentication and backend services.
+- **React**: For the frontend service.
+- **Prothemeus and Grafana**: For monitoring.
+
+## Preview
+
+| **Screenshots**                                                                                                                                                                                                                                                  |                                                                                                                                                                                                                                                                     |
+| ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| **HomePage (Categories)** <br> <div style="width: 300px; height: 200px; background-color: white; display: flex; justify-content: center; align-items: center;"><img src="https://i.imgur.com/5YK1TFU.png" style="max-width: 100%; max-height: 100%;" /> </div>   | **Services** <br> <div style="width: 300px; height: 200px; background-color: white; display: flex; justify-content: center; align-items: center;"><img src="https://i.imgur.com/i10YvJ8.png" style="max-width: 100%; max-height: 100%;" /> </div>                   |
+| **Service Booking** <br> <div style="width: 300px; height: 200px; background-color: white; display: flex; justify-content: center; align-items: center;"><img src="https://i.imgur.com/DCUa3Er.png" style="max-width: 100%; max-height: 100%;" /> </div>         | **Booking Confirmation** <br> <div style="width: 300px; height: 200px; background-color: white; display: flex; justify-content: center; align-items: center;"><img src="https://i.imgur.com/flJ0R5t.png" style="max-width: 100%; max-height: 100%;" /> </div>       |
+| **Add a New Service** <br> <div style="width: 300px; height: 200px; background-color: white; display: flex; justify-content: center; align-items: center;"><img src="https://i.imgur.com/h1pIC3u.png" style="max-width: 100%; max-height: 100%;" /> </div>       | **User Profile (Bookings)** <br> <div style="width: 300px; height: 200px; background-color: white; display: flex; justify-content: center; align-items: center;"><img src="https://i.imgur.com/PiRWYH0.png" style="max-width: 100%; max-height: 100%;" /> </div>    |
+| **User Profile (Services)** <br> <div style="width: 300px; height: 200px; background-color: white; display: flex; justify-content: center; align-items: center;"><img src="https://i.imgur.com/JGlDI8A.png" style="max-width: 100%; max-height: 100%;" /> </div> | **View Booking (and Actions)** <br> <div style="width: 300px; height: 200px; background-color: white; display: flex; justify-content: center; align-items: center;"><img src="https://i.imgur.com/lvkYUvX.png" style="max-width: 100%; max-height: 100%;" /> </div> |
 
 ## Project Structure
 

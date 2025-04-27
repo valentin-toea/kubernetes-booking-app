@@ -46,13 +46,13 @@ export default function RegisterPage(): JSX.Element {
 
       toast({
         title: "Authentication",
-        description: "Succesfully logged in",
+        description: "Succesfully signed up",
       });
 
       router.push("/login");
     } catch {
       toast({
-        title: "Authentication Error",
+        title: "Sign up Error",
         description: "Error",
       });
     }

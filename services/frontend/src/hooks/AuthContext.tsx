@@ -1,5 +1,6 @@
 "use client";
 
+import { authApi } from "@/lib/api";
 import decodeToken from "@/lib/decodeToken";
 import React, { createContext, useContext, useEffect, useState } from "react";
 
@@ -13,10 +14,8 @@ interface AuthContextType {
   >;
 }
 
-// Creează contextul cu un tip implicit
 const AuthContext = createContext<AuthContextType | undefined>(undefined);
 
-// Provider pentru autentificare
 export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
@@ -31,14 +30,22 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
       return;
     }
 
-    const checkAuth = () => {
+    const checkAuth = async () => {
       setLoading(true);
-
       const token = localStorage.getItem("access_token");
 
-      setIsAuthenticated(!!token);
-      setUserData(decodeToken(token) as { username: string; id: number });
-      setLoading(false);
+      try {
+        await authApi.get("auth/validate").then(console.log);
+        setIsAuthenticated(!!token);
+        setUserData(
+          decodeToken(token) as { username: string; id: number } | null
+        );
+      } catch (err) {
+        setIsAuthenticated(false);
+        setUserData({ username: "", id: 0 });
+      } finally {
+        setLoading(false);
+      }
     };
 
     checkAuth();
@@ -59,7 +66,6 @@ export const AuthProvider: React.FC<{ children: React.ReactNode }> = ({
   );
 };
 
-// Hook pentru a utiliza contextul
 export const useAuth = (): AuthContextType => {
   const context = useContext(AuthContext);
 

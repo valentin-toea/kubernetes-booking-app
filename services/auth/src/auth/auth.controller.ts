@@ -32,13 +32,11 @@ export class AuthController {
       throw new UnauthorizedException('Authorization header missing');
     }
 
-    // Extrage token-ul din header
     const token = authHeader.split(' ')[1];
     if (!token) {
       throw new UnauthorizedException('Bearer token missing');
     }
 
-    // Validează token-ul și returnează payload-ul
     return this.authService.validateToken(token);
   }
 }
